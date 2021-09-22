@@ -105,8 +105,10 @@ public class BookingService {
 		if(allBooking==null) return false;
 		for(int i=0;i<allBooking.size();i++) {
 			String bookedTime=allBooking.get(i).getBookedTime();
-			String newDate=bookedTime.substring(0, 10);
-			if(newDate.equals(current)==false) {
+			String bookedDate=bookedTime.substring(0, 10);
+
+			//
+			if(bookedDate.equals(current)==false) {
 				allBooking.get(i).setStatus(Booking.Status.EXPIRED);
 				timeService.changeStatus(allBooking().get(i).getTime().getId(),"available");
 				bookingRepo.save(allBooking.get(i));

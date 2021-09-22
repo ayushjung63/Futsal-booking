@@ -2,6 +2,8 @@ package com.futsal;
 
 import com.futsal.controller.*;
 import org.springframework.beans.factory.annotation.*;
+import org.springframework.context.event.*;
+import org.springframework.stereotype.*;
 
 import javax.annotation.*;
 import javax.transaction.*;
@@ -16,6 +18,7 @@ public class ResetTimeStatus {
 
     @PostConstruct
     public void resetTime() {
+        System.out.println("RESETING............");
         timeController.reset();
         bookingController.expireBooking();
     }
